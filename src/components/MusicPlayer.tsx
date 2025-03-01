@@ -11,9 +11,11 @@ import Confetti from "./Confetti";
 
 interface MusicPlayerProps {
   track: Track;
+  onNextTrack: () => void;
+  onPreviousTrack: () => void;
 }
 
-const MusicPlayer = ({ track }: MusicPlayerProps) => {
+const MusicPlayer = ({ track, onNextTrack, onPreviousTrack }: MusicPlayerProps) => {
   const {
     isPlaying,
     currentTime,
@@ -22,7 +24,7 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
     handleSeek,
     skipNext,
     skipPrevious
-  } = useAudioPlayer(track);
+  } = useAudioPlayer(track, onNextTrack, onPreviousTrack);
 
   console.log("MusicPlayer - hasEnded:", hasEnded);
 

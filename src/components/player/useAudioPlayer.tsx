@@ -2,7 +2,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Track } from "../../lib/types";
 
-export const useAudioPlayer = (track: Track) => {
+export const useAudioPlayer = (
+  track: Track, 
+  onNextTrack?: () => void,
+  onPreviousTrack?: () => void
+) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [hasEnded, setHasEnded] = useState(false);
@@ -50,7 +54,14 @@ export const useAudioPlayer = (track: Track) => {
       setHasEnded(false); // Reset hasEnded when track changes
       
       if (wasPlaying) {
-        togglePlay(); // Use the function to ensure proper state updates
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch(e => {
+            console.error('Error playing audio after track change:', e);
+            setIsPlaying(false);
+          });
       }
     }
   }, [track]);
@@ -67,6 +78,13 @@ export const useAudioPlayer = (track: Track) => {
     setIsPlaying(false);
     setCurrentTime(0);
     setHasEnded(true);
+    
+    // Auto play next track when current track ends
+    if (onNextTrack) {
+      setTimeout(() => {
+        onNextTrack();
+      }, 2000); // Wait 2 seconds before changing tracks to allow for confetti animation
+    }
   };
 
   const togglePlay = () => {
@@ -99,13 +117,19 @@ export const useAudioPlayer = (track: Track) => {
   };
 
   const skipNext = () => {
-    // In a real app, this would actually change the track
-    console.log('Skip to next track');
+    if (onNextTrack) {
+      onNextTrack();
+    } else {
+      console.log('Skip to next track');
+    }
   };
 
   const skipPrevious = () => {
-    // In a real app, this would actually change the track
-    console.log('Skip to previous track');
+    if (onPreviousTrack) {
+      onPreviousTrack();
+    } else {
+      console.log('Skip to previous track');
+    }
   };
 
   return {

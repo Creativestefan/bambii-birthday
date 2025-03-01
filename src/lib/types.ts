@@ -10,3 +10,8 @@ export interface Track {
   isVideo?: boolean; // Flag to indicate if we should use video
   audioSrc?: string; // URL to the audio file
 }
+
+export interface PlayerState {
+  currentTrackIndex: number;
+  tracks: Track[];
+}
