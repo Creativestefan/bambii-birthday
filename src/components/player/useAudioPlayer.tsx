@@ -50,7 +50,7 @@ export const useAudioPlayer = (track: Track) => {
       setHasEnded(false); // Reset hasEnded when track changes
       
       if (wasPlaying) {
-        audioRef.current.play().catch(e => console.error('Error playing audio:', e));
+        togglePlay(); // Use the function to ensure proper state updates
       }
     }
   }, [track]);
@@ -67,20 +67,27 @@ export const useAudioPlayer = (track: Track) => {
     setIsPlaying(false);
     setCurrentTime(0);
     setHasEnded(true);
-    // In a real app, you might want to skip to the next track here
   };
 
   const togglePlay = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
         // Reset hasEnded when starting to play again
         setHasEnded(false);
-        // Actually play the audio
-        audioRef.current.play().catch(e => console.error('Error playing audio:', e));
+        // Attempt to play the audio - this action will trigger user interaction for iOS
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+            console.log("Audio started playing successfully");
+          })
+          .catch(e => {
+            console.error('Error playing audio:', e);
+            setIsPlaying(false); // Revert state if play fails
+          });
       }
-      setIsPlaying(!isPlaying);
     }
   };
 

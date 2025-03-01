@@ -29,7 +29,12 @@ const AlbumArt = ({ track, isPlaying }: AlbumArtProps) => {
     // Control video playback based on isPlaying state
     if (videoRef.current && track.isVideo && track.videoArt) {
       if (isPlaying) {
-        videoRef.current.play().catch(e => console.error('Error playing video:', e));
+        // When play is clicked, try to play the video
+        videoRef.current.play()
+          .catch(e => {
+            console.error('Error playing video:', e);
+            // This error can occur on iOS when user hasn't interacted with the page yet
+          });
       } else {
         videoRef.current.pause();
       }
