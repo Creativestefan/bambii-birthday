@@ -1,13 +1,7 @@
 
 import { ChevronDown } from "lucide-react";
-import VolumeControl from "../VolumeControl";
 
-interface PlayerHeaderProps {
-  volume: number;
-  onVolumeChange: (volume: number) => void;
-}
-
-const PlayerHeader = ({ volume, onVolumeChange }: PlayerHeaderProps) => {
+const PlayerHeader = () => {
   return (
     <div className="flex justify-between items-center p-3 sm:p-4 md:p-6">
       <button className="p-2 rounded-full hover:bg-player-light/30 transition-colors duration-200">
@@ -18,7 +12,6 @@ const PlayerHeader = ({ volume, onVolumeChange }: PlayerHeaderProps) => {
           Now Playing
         </h2>
       </div>
-      {/* Removed volume control from header as it's now in the main controls for consistency */}
       <div className="w-8 h-8 opacity-0">
         {/* Invisible placeholder to maintain layout */}
       </div>

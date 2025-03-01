@@ -17,13 +17,11 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
   const {
     isPlaying,
     currentTime,
-    volume,
     hasEnded,
     togglePlay,
     handleSeek,
     skipNext,
-    skipPrevious,
-    handleVolumeChange
+    skipPrevious
   } = useAudioPlayer(track);
 
   console.log("MusicPlayer - hasEnded:", hasEnded);
@@ -39,10 +37,7 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
       {/* Content container */}
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
-        <PlayerHeader 
-          volume={volume} 
-          onVolumeChange={handleVolumeChange} 
-        />
+        <PlayerHeader />
         
         {/* Album art - reduce size on mobile */}
         <div className="px-4 sm:px-8 md:px-12">
@@ -65,8 +60,6 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
           togglePlay={togglePlay}
           skipNext={skipNext}
           skipPrevious={skipPrevious}
-          volume={volume}
-          onVolumeChange={handleVolumeChange}
           hasEnded={hasEnded}
         />
       </div>

@@ -5,7 +5,6 @@ import { Track } from "../../lib/types";
 export const useAudioPlayer = (track: Track) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(0.7);
   const [hasEnded, setHasEnded] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -14,6 +13,11 @@ export const useAudioPlayer = (track: Track) => {
   useEffect(() => {
     // Create a new audio element
     audioRef.current = new Audio();
+    
+    // Set default volume
+    if (audioRef.current) {
+      audioRef.current.volume = 0.7;
+    }
     
     // Set up event listeners for the audio element
     const audio = audioRef.current;
@@ -50,12 +54,6 @@ export const useAudioPlayer = (track: Track) => {
       }
     }
   }, [track]);
-
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = volume;
-    }
-  }, [volume]);
 
   const updateProgress = () => {
     if (audioRef.current) {
@@ -103,19 +101,13 @@ export const useAudioPlayer = (track: Track) => {
     console.log('Skip to previous track');
   };
 
-  const handleVolumeChange = (newVolume: number) => {
-    setVolume(newVolume);
-  };
-
   return {
     isPlaying,
     currentTime,
-    volume,
     hasEnded,
     togglePlay,
     handleSeek,
     skipNext,
-    skipPrevious,
-    handleVolumeChange
+    skipPrevious
   };
 };

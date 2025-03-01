@@ -1,7 +1,6 @@
 
-import { SkipBack, SkipForward, Play, Pause, Repeat, Shuffle, MessageCircle, Volume, Volume1, Volume2, VolumeX } from "lucide-react";
+import { SkipBack, SkipForward, Play, Pause, Repeat, Shuffle, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import VolumeControl from "./VolumeControl";
 import MessageDisplay from "./MessageDisplay";
 
 interface PlayerControlsProps {
@@ -9,8 +8,6 @@ interface PlayerControlsProps {
   togglePlay: () => void;
   skipNext: () => void;
   skipPrevious: () => void;
-  volume: number;
-  onVolumeChange: (volume: number) => void;
   hasEnded?: boolean;
 }
 
@@ -19,22 +16,12 @@ const PlayerControls = ({
   togglePlay,
   skipNext,
   skipPrevious,
-  volume,
-  onVolumeChange,
   hasEnded = false
 }: PlayerControlsProps) => {
   const [showMessage, setShowMessage] = useState(false);
 
   const toggleMessageDisplay = () => {
     setShowMessage(!showMessage);
-  };
-
-  // Volume icon based on current level
-  const VolumeIcon = () => {
-    if (volume === 0) return <VolumeX size={18} />;
-    if (volume < 0.3) return <Volume size={18} />;
-    if (volume < 0.7) return <Volume1 size={18} />;
-    return <Volume2 size={18} />;
   };
 
   return (
@@ -78,27 +65,6 @@ const PlayerControls = ({
           >
             <SkipForward size={24} />
           </button>
-        </div>
-        
-        {/* Mobile volume control - always visible but compact */}
-        <div className="mt-6 flex items-center justify-center">
-          <button className="mr-2 text-player-muted hover:text-player-text transition-colors">
-            <VolumeIcon />
-          </button>
-          <div className="w-24 sm:w-32">
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.01}
-              value={volume}
-              onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
-              className="w-full"
-              style={{
-                background: `linear-gradient(to right, #9b87f5 ${volume * 100}%, #4d4d4d ${volume * 100}%)`,
-              }}
-            />
-          </div>
         </div>
       </div>
 
