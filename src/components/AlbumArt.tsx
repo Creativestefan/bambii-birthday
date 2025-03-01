@@ -46,7 +46,7 @@ const AlbumArt = ({ track, isPlaying }: AlbumArtProps) => {
       <div 
         className={`relative w-full max-w-md aspect-square rounded-md overflow-hidden shadow-2xl transform transition-all duration-700 ${
           imageLoaded ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
-        } ${isPlaying && !track.isVideo ? 'album-rotate playing' : 'album-rotate'}`}
+        }`}
       >
         {/* Low-res blur placeholder */}
         <div 
