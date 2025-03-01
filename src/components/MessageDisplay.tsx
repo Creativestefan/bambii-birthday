@@ -86,7 +86,7 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
               >
                 <p className={`text-center text-xl ${
                   index === currentIndex 
-                    ? "text-player-accent" 
+                    ? "text-white" 
                     : "text-player-muted"
                 }`}>
                   {message}
