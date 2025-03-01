@@ -42,7 +42,13 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
   // Auto-scroll to the newest message
   useEffect(() => {
     if (messagesRef.current) {
-      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+      const activeMessage = document.getElementById(`message-${currentIndex}`);
+      if (activeMessage) {
+        activeMessage.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
     }
   }, [currentIndex]);
 
@@ -61,20 +67,29 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
         
         <div 
           ref={messagesRef} 
-          className="p-4 h-[300px] overflow-y-auto"
+          className="p-4 h-[300px] overflow-y-auto scrollbar-none py-8"
         >
-          {messages.map((message, index) => (
-            <div 
-              key={index}
-              className={`mb-4 p-3 rounded-lg ${
-                index === currentIndex 
-                  ? "bg-player-accent/20 border-l-4 border-player-accent animate-pulse-subtle" 
-                  : "bg-player-light/30"
-              } transition-all duration-300`}
-            >
-              <p className="text-player-text">{message}</p>
-            </div>
-          ))}
+          <div className="flex flex-col items-center space-y-6">
+            {messages.map((message, index) => (
+              <div 
+                id={`message-${index}`}
+                key={index}
+                className={`w-full max-w-lg transition-all duration-300 ease-in-out ${
+                  index === currentIndex 
+                    ? "scale-105 font-semibold" 
+                    : "opacity-50"
+                }`}
+              >
+                <p className={`text-center text-lg ${
+                  index === currentIndex 
+                    ? "text-player-accent" 
+                    : "text-player-muted"
+                }`}>
+                  {message}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
         
         <div className="p-4 border-t border-player-light text-center text-sm text-player-muted">
