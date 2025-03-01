@@ -26,6 +26,8 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
     handleVolumeChange
   } = useAudioPlayer(track);
 
+  console.log("MusicPlayer - hasEnded:", hasEnded);
+
   return (
     <div className="relative w-full min-h-screen overflow-hidden flex flex-col justify-between">
       {/* Show confetti when song has ended */}

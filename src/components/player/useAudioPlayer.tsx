@@ -43,6 +43,7 @@ export const useAudioPlayer = (track: Track) => {
       audioRef.current.src = track.audioSrc || '';
       
       setCurrentTime(0);
+      setHasEnded(false); // Reset hasEnded when track changes
       
       if (wasPlaying) {
         audioRef.current.play().catch(e => console.error('Error playing audio:', e));
@@ -64,6 +65,7 @@ export const useAudioPlayer = (track: Track) => {
   };
 
   const handleEnd = () => {
+    console.log("Audio has ended! Setting hasEnded to true");
     setIsPlaying(false);
     setCurrentTime(0);
     setHasEnded(true);

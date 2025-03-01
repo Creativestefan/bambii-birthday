@@ -15,6 +15,8 @@ const Confetti = () => {
   const [pieces, setPieces] = useState<ConfettiPiece[]>([]);
   
   useEffect(() => {
+    console.log("Confetti component mounted");
+    
     // Create confetti pieces
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff', '#ffca4a', '#ff7cd8', '#9f56ff'];
     const newPieces: ConfettiPiece[] = [];
@@ -33,6 +35,7 @@ const Confetti = () => {
     }
     
     setPieces(newPieces);
+    console.log("Created", newPieces.length, "confetti pieces");
     
     // Animation loop
     let animationFrameId: number;
@@ -43,15 +46,18 @@ const Confetti = () => {
       const deltaTime = timestamp - lastTimestamp;
       lastTimestamp = timestamp;
       
-      setPieces(prevPieces => 
-        prevPieces.map(piece => ({
+      setPieces(prevPieces => {
+        const updatedPieces = prevPieces.map(piece => ({
           ...piece,
           y: piece.y + (piece.speed * deltaTime * 0.01), // Move down
           rotation: piece.rotation + (deltaTime * 0.01) // Rotate gradually
-        })).filter(piece => piece.y < 120) // Remove pieces that have fallen off-screen
-      );
+        })).filter(piece => piece.y < 120); // Remove pieces that have fallen off-screen
+        
+        return updatedPieces;
+      });
       
-      if (pieces.some(piece => piece.y < 120)) { // Continue animation if any pieces are still visible
+      // Continue animation if any pieces are still visible
+      if (pieces.length > 0 && pieces.some(piece => piece.y < 120)) {
         animationFrameId = requestAnimationFrame(animate);
       }
     };
@@ -59,13 +65,14 @@ const Confetti = () => {
     animationFrameId = requestAnimationFrame(animate);
     
     return () => {
+      console.log("Cleaning up confetti animation");
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
     };
   }, []);
   
-  if (pieces.length === 0) return null;
+  console.log("Rendering Confetti with", pieces.length, "pieces");
   
   return (
     <div className="fixed inset-0 pointer-events-none z-50">
