@@ -6,4 +6,5 @@ export interface Track {
   album: string;
   duration: number; // in seconds
   albumArt: string;
+  isVideo?: boolean; // Flag to indicate if albumArt is a video
 }

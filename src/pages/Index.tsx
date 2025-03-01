@@ -5,6 +5,8 @@ import { Track } from "../lib/types";
 
 // Default album image in case the user hasn't uploaded one yet
 const DEFAULT_ALBUM_ART = "/placeholder.svg";
+// Video URL
+const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
 
 const Index = () => {
   const [track, setTrack] = useState<Track>({
@@ -13,7 +15,8 @@ const Index = () => {
     artist: "John Smith",
     album: "Night Stories",
     duration: 241, // 4:01
-    albumArt: DEFAULT_ALBUM_ART,
+    albumArt: VIDEO_ALBUM_ART,
+    isVideo: true,
   });
 
   // This effect would normally handle any initialization
@@ -23,8 +26,7 @@ const Index = () => {
     // If you have an existing mechanism to store/retrieve uploaded images,
     // you could integrate that here
     
-    // For now, we'll just use our default placeholder
-    // Note: In a real app with actual image uploads, you'd update this
+    // We're now using the video URL
   }, []);
 
   return (
