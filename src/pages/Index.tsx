@@ -8,7 +8,7 @@ const IMAGE_ALBUM_ART = "https://images.chiefpriest.design/es5.png";
 // Video URL
 const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
 // Audio URL
-const AUDIO_URL = "https://images.chiefpriest.design/esosa.mp3";
+const AUDIO_URL = "https://images.chiefpriest.design/Esosa.mp3";
 
 const Index = () => {
   const [track, setTrack] = useState<Track>({
