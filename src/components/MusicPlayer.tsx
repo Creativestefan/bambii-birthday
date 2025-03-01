@@ -157,6 +157,15 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
         }}
       />
       
+      {/* Subtle matching background overlay */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-br from-[#E5DEFF]/30 to-[#FFDEE2]/20"
+        style={{
+          mixBlendMode: 'overlay',
+          opacity: 0.6
+        }}
+      />
+      
       {/* Content container */}
       <div className="relative z-10 flex flex-col h-full">
         {/* Header */}
