@@ -1,6 +1,8 @@
 
-import { SkipBack, SkipForward, Play, Pause, Repeat, Shuffle } from "lucide-react";
+import { SkipBack, SkipForward, Play, Pause, Repeat, Shuffle, MessageCircle } from "lucide-react";
+import { useState } from "react";
 import VolumeControl from "./VolumeControl";
+import MessageDisplay from "./MessageDisplay";
 
 interface PlayerControlsProps {
   isPlaying: boolean;
@@ -19,13 +21,25 @@ const PlayerControls = ({
   volume,
   onVolumeChange
 }: PlayerControlsProps) => {
+  const [showMessage, setShowMessage] = useState(false);
+
+  const toggleMessageDisplay = () => {
+    setShowMessage(!showMessage);
+  };
+
   return (
     <div className="w-full p-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
       <div className="flex flex-col items-center">
-        {/* Secondary controls (shuffle, repeat) */}
+        {/* Secondary controls (shuffle, repeat, message) */}
         <div className="flex justify-center items-center space-x-6 mb-4 text-player-muted">
           <button className="hover:text-player-text transition-colors duration-200">
             <Shuffle size={18} />
+          </button>
+          <button 
+            className="hover:text-player-text transition-colors duration-200"
+            onClick={toggleMessageDisplay}
+          >
+            <MessageCircle size={18} />
           </button>
           <button className="hover:text-player-text transition-colors duration-200">
             <Repeat size={18} />
@@ -61,6 +75,11 @@ const PlayerControls = ({
           <VolumeControl volume={volume} onVolumeChange={onVolumeChange} />
         </div>
       </div>
+
+      {/* Message Display */}
+      {showMessage && (
+        <MessageDisplay isPlaying={isPlaying} onClose={() => setShowMessage(false)} />
+      )}
     </div>
   );
 };
