@@ -1,6 +1,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
+import Confetti from "./Confetti";
 
 interface MessageDisplayProps {
   isPlaying: boolean;
@@ -10,6 +11,7 @@ interface MessageDisplayProps {
 const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
   const messagesRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
   
   // Birthday message broken down into meaningful segments
   const messages = [
@@ -33,6 +35,14 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
       scrollInterval = setInterval(() => {
         setCurrentIndex(prevIndex => {
           const nextIndex = (prevIndex + 1) % messages.length;
+          
+          // Check if this is the last message to trigger confetti
+          if (nextIndex === messages.length - 1) {
+            setShowConfetti(true);
+          } else {
+            setShowConfetti(false);
+          }
+          
           return nextIndex;
         });
       }, 5000); // Change message every 5 seconds
@@ -58,6 +68,7 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 animate-slide-up">
+      {showConfetti && <Confetti />}
       <div className="glass backdrop-blur-md rounded-t-lg shadow-lg w-full max-h-[60vh] overflow-hidden">
         <div className="flex justify-between items-center p-3 sm:p-4 border-b border-player-light/30">
           <h3 className="text-player-text font-medium text-sm sm:text-base">Birthday Messages</h3>
