@@ -11,14 +11,18 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
   const messagesRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   
-  // Sample messages - these could be fetched from an API or props
+  // Birthday message broken down into meaningful segments
   const messages = [
-    "Happy Birthday to you! 🎂",
-    "May all your wishes come true ✨",
-    "Enjoy your special day! 🎉",
-    "Wishing you health and happiness 🌟",
-    "Another year of amazing experiences 🎊",
-    "Keep smiling and shining! 💫"
+    "On this special day, I want to take a moment to celebrate you. 🎂",
+    "Birthdays have a way of making us pause and reflect, and I hope today finds you surrounded by love and joy. ✨",
+    "Your journey through life – with all its ups and downs, triumphs and challenges – has shaped you into the incredible person you are today. 🌟",
+    "Each experience, each moment, has added depth and richness to your story. 🎭",
+    "May this new year of life bring you unexpected blessings, meaningful connections, and moments that take your breath away. 🎁",
+    "May you find courage when facing obstacles, peace during uncertain times, and laughter that fills your soul. 💪",
+    "Remember to be gentle with yourself as you grow and evolve. 🌱",
+    "Your worth isn't measured by achievements or productivity, but by the love you share and the light you bring to others' lives. 💫",
+    "Here's to celebrating not just another year, but the beautiful, complex, one-of-a-kind person that you are. 🥂",
+    "Happy Birthday! 🎉"
   ];
 
   // Control scrolling based on play state
