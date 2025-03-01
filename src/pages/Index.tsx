@@ -11,8 +11,8 @@ const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
 const Index = () => {
   const [track, setTrack] = useState<Track>({
     id: "1",
-    title: "Dreaming",
-    artist: "John Smith",
+    title: "Happy Birthday",
+    artist: "DCP",
     album: "Night Stories",
     duration: 241, // 4:01
     albumArt: IMAGE_ALBUM_ART,
