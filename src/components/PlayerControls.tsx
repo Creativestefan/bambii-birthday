@@ -1,5 +1,5 @@
 
-import { SkipBack, SkipForward, Play, Pause, Repeat, Shuffle, MessageCircle } from "lucide-react";
+import { SkipBack, SkipForward, Play, Pause, Repeat, Shuffle, MessageCircle, Volume, Volume1, Volume2, VolumeX } from "lucide-react";
 import { useState } from "react";
 import VolumeControl from "./VolumeControl";
 import MessageDisplay from "./MessageDisplay";
@@ -27,8 +27,16 @@ const PlayerControls = ({
     setShowMessage(!showMessage);
   };
 
+  // Volume icon based on current level
+  const VolumeIcon = () => {
+    if (volume === 0) return <VolumeX size={18} />;
+    if (volume < 0.3) return <Volume size={18} />;
+    if (volume < 0.7) return <Volume1 size={18} />;
+    return <Volume2 size={18} />;
+  };
+
   return (
-    <div className="w-full p-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+    <div className="w-full p-4 md:p-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
       <div className="flex flex-col items-center">
         {/* Secondary controls (shuffle, repeat, message) */}
         <div className="flex justify-center items-center space-x-6 mb-4 text-player-muted">
@@ -70,9 +78,25 @@ const PlayerControls = ({
           </button>
         </div>
         
-        {/* Additional controls like volume (visible on larger screens) */}
-        <div className="mt-6 hidden md:block">
-          <VolumeControl volume={volume} onVolumeChange={onVolumeChange} />
+        {/* Mobile volume control - always visible but compact */}
+        <div className="mt-6 flex items-center justify-center">
+          <button className="mr-2 text-player-muted hover:text-player-text transition-colors">
+            <VolumeIcon />
+          </button>
+          <div className="w-24 sm:w-32">
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.01}
+              value={volume}
+              onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
+              className="w-full"
+              style={{
+                background: `linear-gradient(to right, #9b87f5 ${volume * 100}%, #4d4d4d ${volume * 100}%)`,
+              }}
+            />
+          </div>
         </div>
       </div>
 

@@ -25,7 +25,7 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
   } = useAudioPlayer(track);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden flex flex-col justify-between">
+    <div className="relative w-full min-h-screen overflow-hidden flex flex-col justify-between">
       {/* Background effects */}
       <PlayerBackground track={track} isPlaying={isPlaying} />
       
@@ -37,8 +37,10 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
           onVolumeChange={handleVolumeChange} 
         />
         
-        {/* Album art */}
-        <AlbumArt track={track} isPlaying={isPlaying} />
+        {/* Album art - reduce size on mobile */}
+        <div className="px-4 sm:px-8 md:px-12">
+          <AlbumArt track={track} isPlaying={isPlaying} />
+        </div>
         
         {/* Track info */}
         <TrackInfo track={track} isPlaying={isPlaying} />

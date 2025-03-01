@@ -59,8 +59,8 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 animate-slide-up">
       <div className="glass backdrop-blur-md rounded-t-lg shadow-lg w-full max-h-[60vh] overflow-hidden">
-        <div className="flex justify-between items-center p-4 border-b border-player-light/30">
-          <h3 className="text-player-text font-medium">Birthday Messages</h3>
+        <div className="flex justify-between items-center p-3 sm:p-4 border-b border-player-light/30">
+          <h3 className="text-player-text font-medium text-sm sm:text-base">Birthday Messages</h3>
           <button 
             onClick={onClose}
             className="text-player-muted hover:text-player-text transition-colors"
@@ -71,7 +71,7 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
         
         <div 
           ref={messagesRef} 
-          className="p-4 h-[300px] overflow-y-auto scrollbar-none py-8"
+          className="p-3 sm:p-4 h-[200px] sm:h-[300px] overflow-y-auto scrollbar-none py-6 sm:py-8"
         >
           <div className="flex flex-col items-center space-y-6">
             {messages.map((message, index) => (
@@ -84,7 +84,7 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
                     : "opacity-50"
                 }`}
               >
-                <p className={`text-center text-xl ${
+                <p className={`text-center text-base sm:text-xl ${
                   index === currentIndex 
                     ? "text-white" 
                     : "text-player-muted"
@@ -96,7 +96,7 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
           </div>
         </div>
         
-        <div className="p-4 border-t border-player-light/30 text-center text-sm text-player-muted">
+        <div className="p-2 sm:p-4 border-t border-player-light/30 text-center text-xs sm:text-sm text-player-muted">
           {isPlaying ? "Messages automatically scroll as music plays" : "Play music to auto-scroll messages"}
         </div>
       </div>

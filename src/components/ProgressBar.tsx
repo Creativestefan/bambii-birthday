@@ -53,7 +53,7 @@ const ProgressBar = ({ currentTime, duration, onSeek }: ProgressBarProps) => {
           onMouseUp={handleMouseUp}
           onTouchStart={handleMouseDown}
           onTouchEnd={handleMouseUp}
-          className="w-full"
+          className="w-full h-2" /* Increased height for better touch targets */
           style={{
             background: `linear-gradient(to right, #9b87f5 ${progressPercentage}%, #4d4d4d ${progressPercentage}%)`,
           }}
