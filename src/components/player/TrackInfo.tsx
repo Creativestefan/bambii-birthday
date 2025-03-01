@@ -16,15 +16,6 @@ const TrackInfo = ({ track, isPlaying }: TrackInfoProps) => {
           {track.artist}{track.album ? ` • ${track.album}` : ''}
         </p>
       </div>
-      
-      {/* Playback visualizer (only showing when playing) */}
-      {isPlaying && (
-        <div className="flex justify-center items-end h-4 space-x-1 my-2">
-          <div className="w-1 h-1 bg-player-accent rounded-full animate-equalizer-1"></div>
-          <div className="w-1 h-1 bg-player-accent rounded-full animate-equalizer-2"></div>
-          <div className="w-1 h-1 bg-player-accent rounded-full animate-equalizer-3"></div>
-        </div>
-      )}
     </>
   );
 };

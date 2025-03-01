@@ -25,7 +25,7 @@ const PlayerControls = ({
   };
 
   return (
-    <div className="w-full p-4 md:p-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+    <div className="w-full p-4 md:p-6 mt-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
       <div className="flex flex-col items-center">
         {/* Secondary controls (shuffle, repeat, message) */}
         <div className="flex justify-center items-center space-x-6 mb-4 text-player-muted">
