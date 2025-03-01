@@ -12,8 +12,8 @@ const Index = () => {
   const [track, setTrack] = useState<Track>({
     id: "1",
     title: "Happy Birthday",
-    artist: "DCP",
-    album: "Night Stories",
+    artist: "Esosa",
+    album: "",
     duration: 241, // 4:01
     albumArt: IMAGE_ALBUM_ART,
     videoArt: VIDEO_ALBUM_ART,

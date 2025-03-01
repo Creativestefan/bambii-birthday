@@ -12,7 +12,9 @@ const TrackInfo = ({ track, isPlaying }: TrackInfoProps) => {
       {/* Track info */}
       <div className="text-center p-4 animate-slide-up">
         <h1 className="text-2xl font-bold mb-1 tracking-tight">{track.title}</h1>
-        <p className="text-player-muted">{track.artist} • {track.album}</p>
+        <p className="text-player-muted">
+          {track.artist}{track.album ? ` • ${track.album}` : ''}
+        </p>
       </div>
       
       {/* Playback visualizer (only showing when playing) */}
