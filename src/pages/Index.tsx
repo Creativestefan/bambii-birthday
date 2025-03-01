@@ -4,7 +4,7 @@ import MusicPlayer from "../components/MusicPlayer";
 import { Track } from "../lib/types";
 
 // Image URL
-const IMAGE_ALBUM_ART = "https://images.chiefpriest.design/es4.png";
+const IMAGE_ALBUM_ART = "https://images.chiefpriest.design/es5.png";
 // Video URL
 const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
 
