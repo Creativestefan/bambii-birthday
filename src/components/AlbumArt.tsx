@@ -65,7 +65,8 @@ const AlbumArt = ({ track, isPlaying }: AlbumArtProps) => {
             onCanPlay={() => setLoaded(true)}
             style={{ 
               opacity: loaded ? 1 : 0,
-              transition: 'opacity 0.5s ease-out'
+              transition: 'opacity 0.5s ease-out',
+              objectPosition: 'center -20px' // This moves the video up by 20px
             }}
           />
         ) : (
