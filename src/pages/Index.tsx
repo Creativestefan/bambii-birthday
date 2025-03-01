@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import MusicPlayer from "../components/MusicPlayer";
 import { Track, PlayerState } from "../lib/types";
 
-// Image URL
+// Image URLs
 const IMAGE_ALBUM_ART = "https://images.chiefpriest.design/es5.png";
+const IMAGE_ALBUM_ART_2 = "https://images.chiefpriest.design/es3.png";
 // Video URL
 const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
 // Audio URL
@@ -33,7 +34,7 @@ const Index = () => {
         artist: "Esosa",
         album: "",
         duration: 154, // assume same duration
-        albumArt: IMAGE_ALBUM_ART,
+        albumArt: IMAGE_ALBUM_ART_2,
         isVideo: false,
         audioSrc: BIRTHDAY_AUDIO_URL,
       }
