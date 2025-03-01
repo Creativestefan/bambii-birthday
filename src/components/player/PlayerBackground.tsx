@@ -17,8 +17,8 @@ const PlayerBackground = ({ track, isPlaying }: PlayerBackgroundProps) => {
     img.onload = () => setIsBackgroundLoaded(true);
   }, [track.albumArt]);
 
-  // Use the appropriate background source based on play state
-  const backgroundSrc = isPlaying && track.isVideo && track.videoArt ? track.videoArt : track.albumArt;
+  // Always use the static image for background, regardless of play state
+  const backgroundSrc = track.albumArt;
 
   return (
     <>
