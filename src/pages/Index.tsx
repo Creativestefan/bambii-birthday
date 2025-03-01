@@ -7,6 +7,8 @@ import { Track } from "../lib/types";
 const IMAGE_ALBUM_ART = "https://images.chiefpriest.design/es5.png";
 // Video URL
 const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
+// Audio URL
+const AUDIO_URL = "https://images.chiefpriest.design/birthday.mp3";
 
 const Index = () => {
   const [track, setTrack] = useState<Track>({
@@ -18,6 +20,7 @@ const Index = () => {
     albumArt: IMAGE_ALBUM_ART,
     videoArt: VIDEO_ALBUM_ART,
     isVideo: true,
+    audioSrc: AUDIO_URL,
   });
 
   return (

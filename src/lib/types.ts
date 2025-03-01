@@ -8,4 +8,5 @@ export interface Track {
   albumArt: string;
   videoArt?: string; // New field for video URL
   isVideo?: boolean; // Flag to indicate if we should use video
+  audioSrc?: string; // URL to the audio file
 }

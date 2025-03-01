@@ -38,9 +38,8 @@ export const useAudioPlayer = (track: Track) => {
     if (audioRef.current) {
       const wasPlaying = !audioRef.current.paused;
       
-      // We'll mock the audio source for now
-      // In a real app, this would be a link to the audio file
-      // audioRef.current.src = track.audioSrc;
+      // Set the actual audio source
+      audioRef.current.src = track.audioSrc || '';
       
       setCurrentTime(0);
       
@@ -55,26 +54,6 @@ export const useAudioPlayer = (track: Track) => {
       audioRef.current.volume = volume;
     }
   }, [volume]);
-
-  // Simulating playing progress for the demo
-  useEffect(() => {
-    let interval: number;
-    
-    if (isPlaying) {
-      interval = window.setInterval(() => {
-        setCurrentTime(prev => {
-          if (prev >= track.duration) {
-            clearInterval(interval);
-            setIsPlaying(false);
-            return 0;
-          }
-          return prev + 0.1;
-        });
-      }, 100);
-    }
-    
-    return () => clearInterval(interval);
-  }, [isPlaying, track.duration]);
 
   const updateProgress = () => {
     if (audioRef.current) {
@@ -94,12 +73,8 @@ export const useAudioPlayer = (track: Track) => {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        // In a real app, this would actually play audio
-        // For now, we'll just simulate playing with the time updating
-        if (!animationRef.current) {
-          animationRef.current = requestAnimationFrame(updateProgress);
-        }
-        // audioRef.current.play().catch(e => console.error('Error playing audio:', e));
+        // Actually play the audio
+        audioRef.current.play().catch(e => console.error('Error playing audio:', e));
       }
       setIsPlaying(!isPlaying);
     }
