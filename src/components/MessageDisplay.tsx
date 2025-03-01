@@ -47,8 +47,8 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
   }, [currentIndex]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 animate-fade-in">
-      <div className="relative bg-player-medium rounded-lg shadow-lg w-11/12 max-w-md max-h-[80vh] overflow-hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 animate-slide-up">
+      <div className="bg-player-medium rounded-t-lg shadow-lg w-full max-h-[60vh] overflow-hidden">
         <div className="flex justify-between items-center p-4 border-b border-player-light">
           <h3 className="text-player-text font-medium">Birthday Messages</h3>
           <button 
