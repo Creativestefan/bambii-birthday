@@ -6,6 +6,7 @@ export const useAudioPlayer = (track: Track) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(0.7);
+  const [hasEnded, setHasEnded] = useState(false);
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const animationRef = useRef<number | null>(null);
@@ -65,6 +66,7 @@ export const useAudioPlayer = (track: Track) => {
   const handleEnd = () => {
     setIsPlaying(false);
     setCurrentTime(0);
+    setHasEnded(true);
     // In a real app, you might want to skip to the next track here
   };
 
@@ -73,6 +75,8 @@ export const useAudioPlayer = (track: Track) => {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
+        // Reset hasEnded when starting to play again
+        setHasEnded(false);
         // Actually play the audio
         audioRef.current.play().catch(e => console.error('Error playing audio:', e));
       }
@@ -105,6 +109,7 @@ export const useAudioPlayer = (track: Track) => {
     isPlaying,
     currentTime,
     volume,
+    hasEnded,
     togglePlay,
     handleSeek,
     skipNext,

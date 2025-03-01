@@ -19,15 +19,16 @@ const Confetti = () => {
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffffff', '#ffca4a', '#ff7cd8', '#9f56ff'];
     const newPieces: ConfettiPiece[] = [];
     
-    for (let i = 0; i < 100; i++) {
+    // Create more confetti for a more dramatic effect
+    for (let i = 0; i < 200; i++) {
       newPieces.push({
         id: i,
         x: Math.random() * 100, // Random position across the screen (%)
-        y: -10 - Math.random() * 10, // Start above the viewport
-        size: 5 + Math.random() * 10, // Random size between 5-15px
+        y: -10 - Math.random() * 30, // Start further above the viewport for song ending
+        size: 5 + Math.random() * 15, // Larger sizes for more impact
         color: colors[Math.floor(Math.random() * colors.length)], // Random color
         rotation: Math.random() * 360, // Random rotation
-        speed: 1 + Math.random() * 3 // Random fall speed
+        speed: 1 + Math.random() * 5 // Faster fall speed for song ending
       });
     }
     

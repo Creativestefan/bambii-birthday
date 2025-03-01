@@ -7,6 +7,7 @@ import PlayerHeader from "./player/PlayerHeader";
 import PlayerBackground from "./player/PlayerBackground";
 import TrackInfo from "./player/TrackInfo";
 import { useAudioPlayer } from "./player/useAudioPlayer";
+import Confetti from "./Confetti";
 
 interface MusicPlayerProps {
   track: Track;
@@ -17,6 +18,7 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
     isPlaying,
     currentTime,
     volume,
+    hasEnded,
     togglePlay,
     handleSeek,
     skipNext,
@@ -26,6 +28,9 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
 
   return (
     <div className="relative w-full min-h-screen overflow-hidden flex flex-col justify-between">
+      {/* Show confetti when song has ended */}
+      {hasEnded && <Confetti />}
+      
       {/* Background effects */}
       <PlayerBackground track={track} isPlaying={isPlaying} />
       
@@ -60,6 +65,7 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
           skipPrevious={skipPrevious}
           volume={volume}
           onVolumeChange={handleVolumeChange}
+          hasEnded={hasEnded}
         />
       </div>
     </div>

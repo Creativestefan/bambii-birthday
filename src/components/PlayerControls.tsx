@@ -11,6 +11,7 @@ interface PlayerControlsProps {
   skipPrevious: () => void;
   volume: number;
   onVolumeChange: (volume: number) => void;
+  hasEnded?: boolean;
 }
 
 const PlayerControls = ({
@@ -19,7 +20,8 @@ const PlayerControls = ({
   skipNext,
   skipPrevious,
   volume,
-  onVolumeChange
+  onVolumeChange,
+  hasEnded = false
 }: PlayerControlsProps) => {
   const [showMessage, setShowMessage] = useState(false);
 
@@ -102,7 +104,11 @@ const PlayerControls = ({
 
       {/* Message Display */}
       {showMessage && (
-        <MessageDisplay isPlaying={isPlaying} onClose={() => setShowMessage(false)} />
+        <MessageDisplay 
+          isPlaying={isPlaying} 
+          onClose={() => setShowMessage(false)}
+          showConfetti={hasEnded}
+        />
       )}
     </div>
   );
