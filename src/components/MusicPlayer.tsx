@@ -27,7 +27,7 @@ const MusicPlayer = ({ track }: MusicPlayerProps) => {
   return (
     <div className="relative w-full h-screen overflow-hidden flex flex-col justify-between">
       {/* Background effects */}
-      <PlayerBackground track={track} />
+      <PlayerBackground track={track} isPlaying={isPlaying} />
       
       {/* Content container */}
       <div className="relative z-10 flex flex-col h-full">
