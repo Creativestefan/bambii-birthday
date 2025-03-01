@@ -54,8 +54,8 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 animate-slide-up">
-      <div className="bg-player-medium rounded-t-lg shadow-lg w-full max-h-[60vh] overflow-hidden">
-        <div className="flex justify-between items-center p-4 border-b border-player-light">
+      <div className="glass backdrop-blur-md rounded-t-lg shadow-lg w-full max-h-[60vh] overflow-hidden">
+        <div className="flex justify-between items-center p-4 border-b border-player-light/30">
           <h3 className="text-player-text font-medium">Birthday Messages</h3>
           <button 
             onClick={onClose}
@@ -74,13 +74,13 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
               <div 
                 id={`message-${index}`}
                 key={index}
-                className={`w-full max-w-lg transition-all duration-300 ease-in-out ${
+                className={`w-full max-w-lg transition-all duration-500 ease-in-out ${
                   index === currentIndex 
                     ? "scale-105 font-semibold" 
                     : "opacity-50"
                 }`}
               >
-                <p className={`text-center text-lg ${
+                <p className={`text-center text-xl ${
                   index === currentIndex 
                     ? "text-player-accent" 
                     : "text-player-muted"
@@ -92,7 +92,7 @@ const MessageDisplay = ({ isPlaying, onClose }: MessageDisplayProps) => {
           </div>
         </div>
         
-        <div className="p-4 border-t border-player-light text-center text-sm text-player-muted">
+        <div className="p-4 border-t border-player-light/30 text-center text-sm text-player-muted">
           {isPlaying ? "Messages automatically scroll as music plays" : "Play music to auto-scroll messages"}
         </div>
       </div>
