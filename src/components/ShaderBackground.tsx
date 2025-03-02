@@ -60,6 +60,7 @@ const ShaderBackground = ({ className = "" }: ShaderBackgroundProps) => {
     }
   `;
 
+  // Use our custom hook with the current canvas and shader
   const { updateMousePosition } = useShader(canvasRef.current, { fragmentShader });
 
   useEffect(() => {
