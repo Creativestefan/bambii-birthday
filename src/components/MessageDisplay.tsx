@@ -18,12 +18,12 @@ const MessageDisplay = ({ isPlaying, onClose, showConfetti = false }: MessageDis
     "Hey Bambii💕, today's your day, and I'm just lucky to be part of it.🎂",
     "I'm proud of you for being so strong and resilient, and for never letting life steal your softness 🌟",
     "You've been through things most people wouldn't even talk about, and you still move with grace, with light, with laughter.🎭",
-    "May this new year of life bring yoYou are worthy — of love, of rest, of joy, and of everything beautiful life has to offer. Never forget that.u unexpected blessings, meaningful connections, and moments that take your breath away. 🎁",
+    "You are worthy — of love, of rest, of joy, and of everything beautiful life has to offer. Never forget that.🎁",
     "May you find courage when facing obstacles, peace during uncertain times, and laughter that fills your soul. 💪",
     "You're still my sunrise — calm, warm, and hopeful. You're the flowering trees after a long dry season. 🌱",
-    "Your worth isn't measuThe buzzing bees that remind me life is full of movement. The sweet scent of roses that lingers even after you're gone.red by achievements or productivity, but by the love you share and the light you bring to others' lives. 💫",
+    "The buzzing bees that remind me life is full of movement. The sweet scent of roses that lingers even after you're gone.💫",
     "Here's to celebrating not just anoHere's to your new age, Bambii — a fresh chapter, a deeper glow. I pray God blesses you in every way imaginable.ther year, but the beautiful, complex, one-of-a-kind person that you are. 🥂",
-    "HappyThat your steps plant beauty wherever you go. That your voice opens doors no one can shut. Birthday! 🎉",
+    "That your steps plant beauty wherever you go. That your voice opens doors no one can shut.🎉",
     "Happy birthday, my love ❤️ Let's make this year unforgettable — full of joy, silly dances, warm hugs, and love that keeps growing.. 💖",
     "I love you more than words will ever get right. Stefan"
   ];
