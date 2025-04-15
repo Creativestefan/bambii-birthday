@@ -1,4 +1,3 @@
-
 import { Track } from "../lib/types";
 import AlbumArt from "./AlbumArt";
 import PlayerControls from "./PlayerControls";
