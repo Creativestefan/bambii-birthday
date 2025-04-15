@@ -10,7 +10,7 @@ const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
 // Audio URL
 const AUDIO_URL = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/Bambii's%20Birthday%20Song.mp3";
 // Birthday Audio URL 
-const BIRTHDAY_AUDIO_URL = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/Bambii's%20Birthday%20Song.mp3";
+const BIRTHDAY_AUDIO_URL = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/My%20Bambii%20Birthday.mp3";
 
 const Index = () => {
   const [playerState, setPlayerState] = useState<PlayerState>({
