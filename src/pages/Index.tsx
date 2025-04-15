@@ -6,7 +6,7 @@ import { Track, PlayerState } from "../lib/types";
 const IMAGE_ALBUM_ART = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/229bc27a-b9a7-4df6-92fd-84b524d435be.JPG";
 const IMAGE_ALBUM_ART_2 = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/09180db9-46ac-4973-a8d0-14fd9f6b2a66.JPG";
 // Video URL
-const VIDEO_ALBUM_ART = "https://images.chiefpriest.design/es.webm";
+const VIDEO_ALBUM_ART = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/09180db9-46ac-4973-a8d0-14fd9f6b2a66.JPG";
 // Audio URL
 const AUDIO_URL = "https://pub-f92fa681d4be4b0fa5ef358bad4ea28f.r2.dev/Bambii's%20Birthday%20Song.mp3";
 // Birthday Audio URL 
